@@ -1,26 +1,42 @@
-export const TransactionHistory = () => {
+import { TransactionHistoryItem } from './TransactionHistoryItem';
+import {
+  TransactionHistoryStyled,
+  TransactionHistoryRow,
+  TableHeadItem,
+  TableHead,
+} from './TransactionHistory.styled';
+import PropTypes from 'prop-types';
+
+export const TransactionHistory = ({ items }) => {
   return (
-    <table className="transaction-history">
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Currency</th>
-        </tr>
-      </thead>
+    <TransactionHistoryStyled>
+      <TableHead>
+        <TransactionHistoryRow>
+          <TableHeadItem>{upperCaseHeaderTable('Type')}</TableHeadItem>
+          <TableHeadItem>{upperCaseHeaderTable('Amount')}</TableHeadItem>
+          <TableHeadItem>{upperCaseHeaderTable('Currency')}</TableHeadItem>
+        </TransactionHistoryRow>
+      </TableHead>
 
       <tbody>
-        <tr>
-          <td>Invoice</td>
-          <td>125</td>
-          <td>USD</td>
-        </tr>
-        <tr>
-          <td>Withdrawal</td>
-          <td>85</td>
-          <td>USD</td>
-        </tr>
+        {items.map(item => (
+          <TransactionHistoryRow key={item.id}>
+            <TransactionHistoryItem item={item} />
+          </TransactionHistoryRow>
+        ))}
       </tbody>
-    </table>
+    </TransactionHistoryStyled>
   );
+};
+
+function upperCaseHeaderTable(title) {
+  return title.toUpperCase();
+}
+
+TransactionHistory.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ),
 };
