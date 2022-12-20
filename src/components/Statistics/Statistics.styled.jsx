@@ -19,7 +19,7 @@ function getRandomHexColor() {
 }
 
 export const StatInfo = styled(StatsItem)`
-  min-width: calc(100% / 6);
+  min-width: calc(100% / 6 - ${props => props.theme.space[3]}px);
   padding-left: ${props => props.theme.space[3]}px;
   padding-right: ${props => props.theme.space[3]}px;
   font-size: ${props => props.theme.fontSizes.xs};

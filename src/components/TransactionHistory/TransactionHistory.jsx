@@ -12,9 +12,9 @@ export const TransactionHistory = ({ items }) => {
     <TransactionHistoryStyled>
       <TableHead>
         <TransactionHistoryRow>
-          <TableHeadItem>{upperCaseHeaderTable('Type')}</TableHeadItem>
-          <TableHeadItem>{upperCaseHeaderTable('Amount')}</TableHeadItem>
-          <TableHeadItem>{upperCaseHeaderTable('Currency')}</TableHeadItem>
+          <TableHeadItem>Type</TableHeadItem>
+          <TableHeadItem>Amount</TableHeadItem>
+          <TableHeadItem>Currency</TableHeadItem>
         </TransactionHistoryRow>
       </TableHead>
 
@@ -29,14 +29,10 @@ export const TransactionHistory = ({ items }) => {
   );
 };
 
-function upperCaseHeaderTable(title) {
-  return title.toUpperCase();
-}
-
 TransactionHistory.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-    })
-  ),
+    }).isRequired
+  ).isRequired,
 };

@@ -28,6 +28,7 @@ export const TableHeadItem = styled.th`
   color: ${props => props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes.xs};
   letter-spacing: 1.5px;
+  text-transform: uppercase;
 `;
 
 export const TransactionHistoryRow = styled.tr`
@@ -49,7 +50,7 @@ export const TransactionHistoryColumn = styled.td`
   width: calc(100% / 3);
   color: ${props => props.theme.colors.secondary};
   font-size: ${props => props.theme.fontSizes.xs};
-
+  text-transform: uppercase;
   text-align: center;
 
   &:first-child {
